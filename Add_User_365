@@ -1,0 +1,17 @@
+### Install-Module -Name AzureAD
+### Set-Executionpolicy -Policytype RemoteSigned
+### Import-Module -Name AzureAD
+### if applicable, this command is for add Azure Active Directory in powershell. Press A for give permission to Untrusted repository. If AzureAD module already added in powershell no need to launch this command.
+### Install-Module MSOnline
+### Import-Module MSOnline
+### Connect-MsolService
+### for more information https://docs.microsoft.com/en-us/microsoft-365/enterprise/connect-to-microsoft-365-powershell?view=o365-worldwide#connect-with-the-azure-active-directory-powershell-for-graph-module
+New-MsolUser -DisplayName <display name> -FirstName <first name> -LastName <last name> -UserPrincipalName <sign-in name> -UsageLocation <ISO 3166-1 alpha-2 country code> -LicenseAssignment <licensing plan name> [-Password <Password>]
+### To list the available licensing plan names, use this command:
+Get-MsolAccountSku
+### O will be "khalid4649:TEAMS_EXPLORutputATORY or contoso:ENTERPRISEPACK" like this. Means organizationname:licensename.
+### For multiple user here is the CSV file headers:
+UserPrincipalName,FirstName,LastName,DisplayName,UsageLocation,AccountSkuId
+### Example: ClaudeL@contoso.onmicrosoft.com,Claude,Loiselle,Claude Loiselle,US,contoso:ENTERPRISEPACK
+Import-Csv -Path <Input CSV File Path and Name> | foreach {New-MsolUser -DisplayName $_.DisplayName -FirstName $_.FirstName -LastName $_.LastName -UserPrincipalName $_.UserPrincipalName -UsageLocation $_.UsageLocation -LicenseAssignment $_.AccountSkuId [-Password $_.Password]} | Export-Csv -Path <Output CSV File Path and Name>
+### Review the output file to see the results. We didn't specify passwords, so the random passwords that Microsoft 365 generated are visible in the output file.
