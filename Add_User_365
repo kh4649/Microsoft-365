@@ -9,7 +9,7 @@
 New-MsolUser -DisplayName <display name> -FirstName <first name> -LastName <last name> -UserPrincipalName <sign-in name> -UsageLocation <ISO 3166-1 alpha-2 country code> -LicenseAssignment <licensing plan name> [-Password <Password>]
 ### To list the available licensing plan names, use this command:
 Get-MsolAccountSku
-### O will be "khalid4649:TEAMS_EXPLORutputATORY or contoso:ENTERPRISEPACK" like this. Means organizationname:licensename.
+### Output will be "khalid4649:TEAMS_EXPLORutputATORY or contoso:ENTERPRISEPACK" like this. Means organizationname:licensename.
 ### For multiple user here is the CSV file headers:
 UserPrincipalName,FirstName,LastName,DisplayName,UsageLocation,AccountSkuId
 ### Example: ClaudeL@contoso.onmicrosoft.com,Claude,Loiselle,Claude Loiselle,US,contoso:ENTERPRISEPACK
